@@ -3,13 +3,12 @@
 /**
  *op_sub- sustration.
  *
- * @data: struct that holds data.
  * @head: stack head.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-void op_sub(data_t *data, stack_t **head, unsigned int line_number)
+void op_sub(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
 	int sus, nodes;
@@ -20,8 +19,8 @@ void op_sub(data_t *data, stack_t **head, unsigned int line_number)
 	if (nodes < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-		fclose(data->file);
-		free(data->line);
+		fclose(data.file);
+		free(data.line);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
@@ -35,13 +34,12 @@ void op_sub(data_t *data, stack_t **head, unsigned int line_number)
 /**
  * op_swap - adds the top two elements of the stack.
  *
- * @data: struct that holds data.
  * @head: stack head.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-void op_swap(data_t *data, stack_t **head, unsigned int line_number)
+void op_swap(stack_t **head, unsigned int line_number)
 {
 	stack_t *h;
 	int len = 0, temp;
@@ -55,8 +53,8 @@ void op_swap(data_t *data, stack_t **head, unsigned int line_number)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		fclose(data->file);
-		free(data->line);
+		fclose(data.file);
+		free(data.line);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}

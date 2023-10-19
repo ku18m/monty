@@ -87,13 +87,12 @@ void free_stack(stack_t *head)
 /**
  * execute - executes the opcode.
  *
- * @data: struct that holds data.
  * @stack: head linked list - stack.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-int execute(data_t *data, stack_t **stack, unsigned int line_number)
+int execute(stack_t **stack, unsigned int line_number)
 {
 	unsigned int i = 0;
 	char *op;
@@ -105,15 +104,15 @@ int execute(data_t *data, stack_t **stack, unsigned int line_number)
 		{"pstr", op_pstr}, {"rotl", op_rotl}, {"rotr", op_rotr},
 		{"queue", op_queue}, {"stack", op_stack}, {NULL, NULL}};
 
-	op = strtok(data->line, " \n\t");
+	op = strtok(data.line, " \n\t");
 	if (op && op[0] == '#')
 		return (0);
-	data->value = strtok(NULL, " \n\t");
+	data.value = strtok(NULL, " \n\t");
 	while (opst[i].opcode && op)
 	{
 		if (strcmp(op, opst[i].opcode) == 0)
 		{
-			opst[i].f(data, stack, line_number);
+			opst[i].f(stack, line_number);
 			return (0);
 		}
 		i++;
@@ -121,8 +120,8 @@ int execute(data_t *data, stack_t **stack, unsigned int line_number)
 	if (op && opst[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
-		fclose(data->file);
-		free(data->line);
+		fclose(data.file);
+		free(data.line);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}

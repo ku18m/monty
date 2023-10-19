@@ -10,7 +10,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/types.h>
-/******HEADERS******/
+/******HEADERS-END******/
 
 /******STRUCTURES******/
 /**
@@ -58,34 +58,38 @@ typedef struct data_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(data_t *data, stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-/******STRUCTURES******/
+/******STRUCTURES-END******/
+
+/******GLOBAL_VARIABLE******/
+extern data_t data;
+/******GLOBAL_VARIABLE-END******/
 
 /******MAIN-FUNCTIONS******/
-int execute(data_t *data, stack_t **head, unsigned int line_number);
+int execute(stack_t **head, unsigned int line_number);
 void free_stack(stack_t *head);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
-/******MAIN-FUNCTIONS******/
+/******MAIN-FUNCTIONS-END******/
 
 /******OP-FUNCTIONS******/
-void op_push(data_t *data, stack_t **head, unsigned int line_number);
-void op_pall(data_t *data, stack_t **head, unsigned int line_number);
-void op_pint(data_t *data, stack_t **head, unsigned int line_number);
-void op_pop(data_t *data, stack_t **head, unsigned int line_number);
-void op_swap(data_t *data, stack_t **head, unsigned int line_number);
-void op_add(data_t *data, stack_t **head, unsigned int line_number);
-void op_nop(data_t *data, stack_t **head, unsigned int line_number);
-void op_sub(data_t *data, stack_t **head, unsigned int line_number);
-void op_div(data_t *data, stack_t **head, unsigned int line_number);
-void op_mul(data_t *data, stack_t **head, unsigned int line_number);
-void op_mod(data_t *data, stack_t **head, unsigned int line_number);
-void op_pchar(data_t *data, stack_t **head, unsigned int line_number);
-void op_pstr(data_t *data, stack_t **head, unsigned int line_number);
-void op_rotl(data_t *data, stack_t **head, unsigned int line_number);
-void op_rotr(data_t *data, stack_t **head, unsigned int line_number);
-void op_queue(data_t *data, stack_t **head, unsigned int line_number);
-void op_stack(data_t *data, stack_t **head, unsigned int line_number);
-/******OP-FUNCTIONS******/
+void op_push(stack_t **head, unsigned int line_number);
+void op_pall(stack_t **head, unsigned int line_number);
+void op_pint(stack_t **head, unsigned int line_number);
+void op_pop(stack_t **head, unsigned int line_number);
+void op_swap(stack_t **head, unsigned int line_number);
+void op_add(stack_t **head, unsigned int line_number);
+void op_nop(stack_t **head, unsigned int line_number);
+void op_sub(stack_t **head, unsigned int line_number);
+void op_div(stack_t **head, unsigned int line_number);
+void op_mul(stack_t **head, unsigned int line_number);
+void op_mod(stack_t **head, unsigned int line_number);
+void op_pchar(stack_t **head, unsigned int line_number);
+void op_pstr(stack_t **head, unsigned int line_number);
+void op_rotl(stack_t **head, unsigned int line_number);
+void op_rotr(stack_t **head, unsigned int line_number);
+void op_queue(stack_t **head, unsigned int line_number);
+void op_stack(stack_t **head, unsigned int line_number);
+/******OP-FUNCTIONS-END******/
 #endif

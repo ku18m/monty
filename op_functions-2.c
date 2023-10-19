@@ -3,13 +3,12 @@
 /**
  * op_pall - prints the stack.
  *
- * @data: struct that holds data.
  * @head: stack head.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-void op_pall(data_t *data, stack_t **head, unsigned int line_number)
+void op_pall(stack_t **head, unsigned int line_number)
 {
 	stack_t *h;
 	(void)line_number;
@@ -30,13 +29,12 @@ void op_pall(data_t *data, stack_t **head, unsigned int line_number)
  * op_pchar - prints the char at the top of the stack,
  * followed by a new line.
  *
- * @data: struct that holds data.
  * @head: stack head.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-void op_pchar(data_t *data, stack_t **head, unsigned int line_number)
+void op_pchar(stack_t **head, unsigned int line_number)
 {
 	stack_t *h;
 
@@ -44,16 +42,16 @@ void op_pchar(data_t *data, stack_t **head, unsigned int line_number)
 	if (!h)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		fclose(data->file);
-		free(data->line);
+		fclose(data.file);
+		free(data.line);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
 	if (h->n > 127 || h->n < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		fclose(data->file);
-		free(data->line);
+		fclose(data.file);
+		free(data.line);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
@@ -63,19 +61,18 @@ void op_pchar(data_t *data, stack_t **head, unsigned int line_number)
 /**
  * op_pint - prints the top.
  *
- * @data: struct that holds data.
  * @head: stack head.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-void op_pint(data_t *data, stack_t **head, unsigned int line_number)
+void op_pint(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-		fclose(data->file);
-		free(data->line);
+		fclose(data.file);
+		free(data.line);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
@@ -85,21 +82,20 @@ void op_pint(data_t *data, stack_t **head, unsigned int line_number)
 /**
  * op_pop - prints the top.
  *
- * @data: struct that holds data.
  * @head: stack head.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-void op_pop(data_t *data, stack_t **head, unsigned int line_number)
+void op_pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *h;
 
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		fclose(data->file);
-		free(data->line);
+		fclose(data.file);
+		free(data.line);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
@@ -112,13 +108,12 @@ void op_pop(data_t *data, stack_t **head, unsigned int line_number)
  * op_pstr - prints the string starting at the top of the stack,
  * followed by a new.
  *
- * @data: struct that holds data.
  * @head: stack head.
  * @line_number: line number.
  *
  * Return: Nothing.
  */
-void op_pstr(data_t *data, stack_t **head, unsigned int line_number)
+void op_pstr(stack_t **head, unsigned int line_number)
 {
 	stack_t *h;
 	(void)line_number;

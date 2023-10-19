@@ -1,5 +1,7 @@
 #include "main.h"
 
+data_t data = {NULL, NULL, NULL, 0};
+
 /**
 * main - monty code interpreter.
 *
@@ -14,7 +16,6 @@ int main(int argc, char *argv[])
 	ssize_t read_line = 1;
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
-	data_t data = {NULL, NULL, NULL, 0};
 
 	if (argc != 2)
 	{
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
 		line_number++;
 		if (read_line > 0)
 		{
-			execute(&data, &stack, line_number);
+			execute(&stack, line_number);
 		}
 		free(data.line);
 	}
