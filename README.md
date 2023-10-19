@@ -24,11 +24,11 @@
 | Task | File |
 | ---- | ---- |
 | 0. push, pall | op_functions-* |
-| 1. pint | op_functions |
-| 2. pop | op_functions |
-| 3. swap | op_functions |
-| 4. add | op_functions |
-| 5. nop | op_functions |
+| 1. pint | op_functions-* |
+| 2. pop | op_functions-* |
+| 3. swap | op_functions-* |
+| 4. add | op_functions-* |
+| 5. nop | op_functions-* |
 | 6. sub | op_functions-* |
 | 7. div | op_functions-* |
 | 8. mul | op_functions-* |
