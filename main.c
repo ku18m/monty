@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 data_t data = {NULL, NULL, NULL, 0};
 
